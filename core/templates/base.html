@@ -11,6 +11,7 @@
     <link href="{% static 'core/css/menu.css' %}?v=6" rel="stylesheet">
 </head>
 <body class="bg-light">
+<div class="sticky-top">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         {% if la_le_tan %}{% url 'le_tan_dashboard' as brand_url %}
@@ -173,6 +174,7 @@
     </div>
 </nav>
 {% endif %}
+</div>
 
 <main class="container my-4">
     {% if messages %}
