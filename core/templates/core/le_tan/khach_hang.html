@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Lễ tân - Khách hàng{% endblock %}
+
+{% block content %}
+<h3 class="mb-3"><i class="bi bi-clipboard-check"></i> Khu vực Lễ tân</h3>
+{% include 'core/le_tan/_nav.html' %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form method="get" class="d-flex gap-2">
+        <input type="text" name="q" value="{{ q }}" class="form-control form-control-sm"
+               placeholder="Tìm theo tên hoặc số điện thoại...">
+        <button class="btn btn-sm btn-outline-secondary">Tìm</button>
+    </form>
+    <button class="btn btn-sm btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#formKhach">
+        <i class="bi bi-person-plus"></i> Thêm khách hàng
+    </button>
+</div>
+
+<div class="collapse {% if form.errors %}show{% endif %}" id="formKhach">
+    <div class="card shadow-sm mb-3 border-success">
+        <div class="card-header bg-white"><strong>Thêm khách hàng mới</strong></div>
+        <div class="card-body">
+            <form method="post" action="{% url 'le_tan_khach_hang' %}">
+                {% csrf_token %}
+                <div class="row g-2">
+                    <div class="col-md-6">{% include 'core/_field.html' with field=form.ho_ten %}</div>
+                    <div class="col-md-3">{% include 'core/_field.html' with field=form.gioi_tinh %}</div>
+                    <div class="col-md-3">{% include 'core/_field.html' with field=form.ngay_sinh %}</div>
+                    <div class="col-md-4">{% include 'core/_field.html' with field=form.so_dien_thoai %}</div>
+                    <div class="col-md-4">{% include 'core/_field.html' with field=form.cccd %}</div>
+                    <div class="col-md-4">{% include 'core/_field.html' with field=form.dia_chi %}</div>
+                </div>
+                <button class="btn btn-sm btn-outline-primary"><i class="bi bi-check-circle"></i> Lưu khách hàng</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<p class="small text-muted mb-1"><i class="bi bi-info-circle"></i> Bấm đúp vào một dòng để chỉnh sửa thông tin khách hàng.</p>
+<div class="card shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr><th>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Điện thoại</th><th>Số lịch hẹn</th><th>Số mũi tiêm</th></tr>
+            </thead>
+            <tbody>
+                {% for kh in ds %}
+                <tr ondblclick="location.href='{% url 'le_tan_khach_hang_sua' kh.id %}'" style="cursor:pointer" title="Bấm đúp để sửa">
+                    <td class="fw-semibold">{{ kh.ho_ten }}</td>
+                    <td>{{ kh.gioi_tinh }}</td>
+                    <td>{{ kh.ngay_sinh|date:"d/m/Y" }}</td>
+                    <td>{{ kh.so_dien_thoai }}</td>
+                    <td>{{ kh.lich_hen.count }}</td>
+                    <td>{{ kh.mui_tiem.count }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="6" class="text-center text-muted py-4">Không tìm thấy khách hàng.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
