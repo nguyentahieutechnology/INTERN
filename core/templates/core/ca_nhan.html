@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Hồ sơ của tôi{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Hồ sơ của tôi" %}{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3 class="mb-0"><i class="bi bi-people"></i> Hồ sơ của tôi &amp; người thân</h3>
+    <h3 class="mb-0"><i class="bi bi-people"></i> {% trans "Hồ sơ của tôi" %} &amp; {% trans "người thân" %}</h3>
     <div>
-        <a href="{% url 'them_nguoi_than' %}" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i> Thêm người thân</a>
-        <a href="{% url 'dat_lich' %}" class="btn btn-outline-primary"><i class="bi bi-calendar-plus"></i> Đặt lịch hẹn</a>
+        <a href="{% url 'them_nguoi_than' %}" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i> {% trans "Thêm người thân" %}</a>
+        <a href="{% url 'dat_lich' %}" class="btn btn-outline-primary"><i class="bi bi-calendar-plus"></i> {% trans "Đặt lịch hẹn" %}</a>
     </div>
 </div>
 
@@ -22,7 +23,7 @@
                     </div>
                     <p class="small text-muted mb-1">{{ kh.gioi_tinh }} · {{ kh.ngay_sinh|date:"d/m/Y" }}</p>
                     <p class="small mb-2"><i class="bi bi-telephone"></i> {{ kh.so_dien_thoai }}</p>
-                    <span class="small text-primary">Xem sổ tiêm &amp; lịch hẹn &rarr;</span>
+                    <span class="small text-primary">{% trans "Xem sổ tiêm" %} &amp; {% trans "lịch hẹn" %} &rarr;</span>
                 </div>
             </div>
         </a>

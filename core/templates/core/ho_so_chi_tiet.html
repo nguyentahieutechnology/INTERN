@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Hồ sơ - {{ kh.ho_ten }}{% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans with ten=kh.ho_ten %}Hồ sơ - {{ ten }}{% endblocktrans %}{% endblock %}
 
 {% block content %}
-<a href="{% url 'ca_nhan' %}" class="small text-muted">&larr; Về danh sách hồ sơ</a>
+<a href="{% url 'ca_nhan' %}" class="small text-muted">&larr; {% trans "Về danh sách hồ sơ" %}</a>
 <div class="d-flex justify-content-between align-items-center mb-3 mt-1">
     <h3 class="mb-0"><i class="bi bi-person-circle"></i> {{ kh.ho_ten }}
         <span class="badge text-bg-secondary align-middle">{{ kh.get_quan_he_display }}</span></h3>
-    <a href="{% url 'dat_lich' %}" class="btn btn-outline-primary"><i class="bi bi-calendar-plus"></i> Đặt lịch hẹn</a>
+    <a href="{% url 'dat_lich' %}" class="btn btn-outline-primary"><i class="bi bi-calendar-plus"></i> {% trans "Đặt lịch hẹn" %}</a>
 </div>
 
 <div class="row g-3">
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h6 class="text-primary">Thông tin</h6>
-                <p class="mb-1"><strong>Họ tên:</strong> {{ kh.ho_ten }}</p>
-                <p class="mb-1"><strong>Ngày sinh:</strong> {{ kh.ngay_sinh|date:"d/m/Y" }}</p>
-                <p class="mb-1"><strong>Giới tính:</strong> {{ kh.gioi_tinh }}</p>
-                <p class="mb-1"><strong>Điện thoại:</strong> {{ kh.so_dien_thoai }}</p>
-                <p class="mb-1"><strong>CCCD/CMND:</strong> {{ kh.cccd|default:"—" }}</p>
-                <p class="mb-3"><strong>Địa chỉ:</strong> {{ kh.dia_chi|default:"—" }}</p>
+                <h6 class="text-primary">{% trans "Thông tin" %}</h6>
+                <p class="mb-1"><strong>{% trans "Họ tên:" %}</strong> {{ kh.ho_ten }}</p>
+                <p class="mb-1"><strong>{% trans "Ngày sinh:" %}</strong> {{ kh.ngay_sinh|date:"d/m/Y" }}</p>
+                <p class="mb-1"><strong>{% trans "Giới tính:" %}</strong> {{ kh.gioi_tinh }}</p>
+                <p class="mb-1"><strong>{% trans "Điện thoại:" %}</strong> {{ kh.so_dien_thoai }}</p>
+                <p class="mb-1"><strong>{% trans "CCCD/CMND:" %}</strong> {{ kh.cccd|default:"—" }}</p>
+                <p class="mb-3"><strong>{% trans "Địa chỉ:" %}</strong> {{ kh.dia_chi|default:"—" }}</p>
                 <a href="{% url 'khach_sua_ho_so' kh.id %}" class="btn btn-sm btn-outline-primary w-100">
-                    <i class="bi bi-pencil-square"></i> Cập nhật thông tin
+                    <i class="bi bi-pencil-square"></i> {% trans "Cập nhật thông tin" %}
                 </a>
             </div>
         </div>
         {% if ngay_nhac %}
         <div class="alert alert-warning mt-3 mb-0 shadow-sm">
-            <i class="bi bi-bell-fill"></i> <strong>Nhắc lịch:</strong> mũi tiêm tiếp theo dự kiến
+            <i class="bi bi-bell-fill"></i> <strong>{% trans "Nhắc lịch:" %}</strong> {% trans "mũi tiêm tiếp theo dự kiến" %}
             <strong>{{ ngay_nhac|date:"d/m/Y" }}</strong>.
         </div>
         {% endif %}
@@ -36,25 +37,25 @@
     <div class="col-md-8">
         <div class="card shadow-sm">
             <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                <strong>Sổ tiêm điện tử</strong>
+                <strong>{% trans "Sổ tiêm điện tử" %}</strong>
                 {% if mui_list %}
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalSoTiem">
-                    <i class="bi bi-journal-medical"></i> Xem sổ tiêm
+                    <i class="bi bi-journal-medical"></i> {% trans "Xem sổ tiêm" %}
                 </button>
                 {% endif %}
             </div>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
-                    <thead class="table-light"><tr><th>Mũi</th><th>Vắc-xin</th><th>Ngày tiêm</th><th>Mũi kế tiếp</th><th>Phiếu</th></tr></thead>
+                    <thead class="table-light"><tr><th>{% trans "Mũi" %}</th><th>{% trans "Vắc-xin" %}</th><th>{% trans "Ngày tiêm" %}</th><th>{% trans "Mũi kế tiếp" %}</th><th>{% trans "Phiếu" %}</th></tr></thead>
                     <tbody>
                         {% for m in mui_list %}
-                        <tr><td>Mũi {{ m.mui_so }}</td><td>{{ m.vac_xin.ten }}</td>
+                        <tr><td>{% blocktrans with so=m.mui_so %}Mũi {{ so }}{% endblocktrans %}</td><td>{{ m.vac_xin.ten }}</td>
                             <td>{{ m.ngay_tiem|date:"d/m/Y" }}</td><td>{{ m.ngay_hen_mui_ke|date:"d/m/Y"|default:"-" }}</td>
                             <td><button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
                                     data-bs-target="#modalPhieuTiem" data-pdf="{% url 'phieu_tiem_xem' m.id %}">
-                                <i class="bi bi-clipboard2-check"></i> Phiếu tiêm</button></td></tr>
+                                <i class="bi bi-clipboard2-check"></i> {% trans "Phiếu tiêm" %}</button></td></tr>
                         {% empty %}
-                        <tr><td colspan="5" class="text-center text-muted py-4">Chưa có mũi tiêm nào.</td></tr>
+                        <tr><td colspan="5" class="text-center text-muted py-4">{% trans "Chưa có mũi tiêm nào." %}</td></tr>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -64,34 +65,34 @@
 </div>
 
 <div class="card shadow-sm mt-3">
-    <div class="card-header bg-white"><strong>Lịch hẹn</strong></div>
+    <div class="card-header bg-white"><strong>{% trans "Lịch hẹn" %}</strong></div>
     <div class="table-responsive">
         <table class="table table-hover mb-0">
-            <thead class="table-light"><tr><th>Ngày hẹn</th><th>Giờ</th><th>Gói tiêm</th><th>Ghi chú</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+            <thead class="table-light"><tr><th>{% trans "Ngày hẹn" %}</th><th>{% trans "Giờ" %}</th><th>{% trans "Gói tiêm" %}</th><th>{% trans "Ghi chú" %}</th><th>{% trans "Trạng thái" %}</th><th>{% trans "Thao tác" %}</th></tr></thead>
             <tbody>
                 {% for lh in lich_hen_list %}
                 <tr>
                     <td>{{ lh.ngay_hen|date:"d/m/Y" }}</td><td>{{ lh.gio_hen|time:"H:i"|default:"-" }}</td>
                     <td>{{ lh.phac_do.ten|default:"-" }}</td><td>{{ lh.ghi_chu|default:"-" }}</td>
                     <td>
-                        {% if lh.trang_thai == 'cho' %}<span class="badge text-bg-secondary">Chờ xác nhận</span>
-                        {% elif lh.trang_thai == 'xacnhan' %}<span class="badge text-bg-info">Đã xác nhận</span>
-                        {% elif lh.trang_thai == 'datiem' %}<span class="badge text-bg-success">Đã tiêm</span>
-                        {% else %}<span class="badge text-bg-danger">Đã hủy</span>{% endif %}
+                        {% if lh.trang_thai == 'cho' %}<span class="badge text-bg-secondary">{% trans "Chờ xác nhận" %}</span>
+                        {% elif lh.trang_thai == 'xacnhan' %}<span class="badge text-bg-info">{% trans "Đã xác nhận" %}</span>
+                        {% elif lh.trang_thai == 'datiem' %}<span class="badge text-bg-success">{% trans "Đã tiêm" %}</span>
+                        {% else %}<span class="badge text-bg-danger">{% trans "Đã hủy" %}</span>{% endif %}
                     </td>
                     <td>
                         {% if lh.trang_thai == 'cho' or lh.trang_thai == 'xacnhan' %}
                         <form method="post" action="{% url 'khach_huy_lich' lh.id %}" class="d-inline">{% csrf_token %}
                             <button class="btn btn-sm btn-outline-danger"
                                     onclick="return confirm('Hủy lịch hẹn ngày {{ lh.ngay_hen|date:'d/m/Y' }}?')">
-                                <i class="bi bi-x-circle"></i> Hủy
+                                <i class="bi bi-x-circle"></i> {% trans "Hủy" %}
                             </button>
                         </form>
                         {% else %}<span class="text-muted small">—</span>{% endif %}
                     </td>
                 </tr>
                 {% empty %}
-                <tr><td colspan="6" class="text-center text-muted py-4">Chưa có lịch hẹn nào. <a href="{% url 'dat_lich' %}">Đặt lịch ngay</a>.</td></tr>
+                <tr><td colspan="6" class="text-center text-muted py-4">{% trans "Chưa có lịch hẹn nào." %} <a href="{% url 'dat_lich' %}">{% trans "Đặt lịch ngay" %}</a>.</td></tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -100,33 +101,33 @@
 
 <div class="card shadow-sm mt-3">
     <div class="card-header bg-white d-flex justify-content-between align-items-center">
-        <strong><i class="bi bi-clipboard2-heart"></i> Theo dõi sau tiêm</strong>
+        <strong><i class="bi bi-clipboard2-heart"></i> {% trans "Theo dõi sau tiêm" %}</strong>
         {% if co_mui_tiem %}
-        <a href="{% url 'theo_doi_sau_tiem' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> Ghi nhận theo dõi</a>
+        <a href="{% url 'theo_doi_sau_tiem' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> {% trans "Ghi nhận theo dõi" %}</a>
         {% endif %}
     </div>
     <div class="table-responsive">
         <table class="table table-hover mb-0">
-            <thead class="table-light"><tr><th>Ngày ghi</th><th>Mũi tiêm</th><th>Thời điểm</th><th>Nhiệt độ</th><th>Triệu chứng</th><th>Mức độ</th></tr></thead>
+            <thead class="table-light"><tr><th>{% trans "Ngày ghi" %}</th><th>{% trans "Mũi tiêm" %}</th><th>{% trans "Thời điểm" %}</th><th>{% trans "Nhiệt độ" %}</th><th>{% trans "Triệu chứng" %}</th><th>{% trans "Mức độ" %}</th></tr></thead>
             <tbody>
                 {% for td in theo_doi_list %}
                 <tr>
                     <td>{{ td.ngay_ghi_nhan|date:"d/m/Y H:i" }}</td>
-                    <td>{{ td.mui_tiem.vac_xin.ten }} (mũi {{ td.mui_tiem.mui_so }})</td>
+                    <td>{% blocktrans with ten=td.mui_tiem.vac_xin.ten so=td.mui_tiem.mui_so %}{{ ten }} (mũi {{ so }}){% endblocktrans %}</td>
                     <td>{{ td.get_thoi_diem_display }}</td>
                     <td>{{ td.nhiet_do|default:"-" }}{% if td.nhiet_do %}°C{% endif %}</td>
                     <td>{{ td.trieu_chung|default:"-" }}</td>
                     <td>
-                        {% if td.muc_do == 'binh_thuong' %}<span class="badge text-bg-success">Bình thường</span>
-                        {% elif td.muc_do == 'nhe' %}<span class="badge text-bg-info">Phản ứng nhẹ</span>
-                        {% elif td.muc_do == 'can_chu_y' %}<span class="badge text-bg-warning text-dark">Cần chú ý</span>
-                        {% else %}<span class="badge text-bg-danger">Nghiêm trọng</span>{% endif %}
+                        {% if td.muc_do == 'binh_thuong' %}<span class="badge text-bg-success">{% trans "Bình thường" %}</span>
+                        {% elif td.muc_do == 'nhe' %}<span class="badge text-bg-info">{% trans "Phản ứng nhẹ" %}</span>
+                        {% elif td.muc_do == 'can_chu_y' %}<span class="badge text-bg-warning text-dark">{% trans "Cần chú ý" %}</span>
+                        {% else %}<span class="badge text-bg-danger">{% trans "Nghiêm trọng" %}</span>{% endif %}
                     </td>
                 </tr>
                 {% empty %}
                 <tr><td colspan="6" class="text-center text-muted py-4">
-                    {% if co_mui_tiem %}Chưa có ghi nhận. <a href="{% url 'theo_doi_sau_tiem' %}">Ghi nhận ngay</a>.
-                    {% else %}Chưa có mũi tiêm nào để theo dõi.{% endif %}
+                    {% if co_mui_tiem %}{% trans "Chưa có ghi nhận." %} <a href="{% url 'theo_doi_sau_tiem' %}">{% trans "Ghi nhận ngay" %}</a>.
+                    {% else %}{% trans "Chưa có mũi tiêm nào để theo dõi." %}{% endif %}
                 </td></tr>
                 {% endfor %}
             </tbody>
@@ -140,17 +141,17 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mb-0"><i class="bi bi-journal-medical text-primary"></i> Sổ tiêm chủng — {{ kh.ho_ten }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                <h5 class="modal-title mb-0"><i class="bi bi-journal-medical text-primary"></i> {% blocktrans with ten=kh.ho_ten %}Sổ tiêm chủng — {{ ten }}{% endblocktrans %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Đóng' %}"></button>
             </div>
             <div class="modal-body">
                 <p class="small text-muted mb-2">
-                    Ngày sinh: {{ kh.ngay_sinh|date:"d/m/Y" }} · Giới tính: {{ kh.gioi_tinh }} · ĐT: {{ kh.so_dien_thoai }}
+                    {% trans "Ngày sinh:" %} {{ kh.ngay_sinh|date:"d/m/Y" }} · {% trans "Giới tính:" %} {{ kh.gioi_tinh }} · {% trans "ĐT:" %} {{ kh.so_dien_thoai }}
                 </p>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover align-middle mb-0">
                         <thead class="table-light">
-                            <tr><th>Mũi</th><th>Vắc-xin</th><th>Phòng bệnh</th><th>Ngày tiêm</th><th>Số lô</th><th>Người tiêm</th></tr>
+                            <tr><th>{% trans "Mũi" %}</th><th>{% trans "Vắc-xin" %}</th><th>{% trans "Phòng bệnh" %}</th><th>{% trans "Ngày tiêm" %}</th><th>{% trans "Số lô" %}</th><th>{% trans "Người tiêm" %}</th></tr>
                         </thead>
                         <tbody>
                             {% for m in mui_list %}
@@ -168,8 +169,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span class="me-auto small text-muted">Tổng: {{ mui_list|length }} mũi</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                <span class="me-auto small text-muted">{% blocktrans with tong=mui_list|length %}Tổng: {{ tong }} mũi{% endblocktrans %}</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">{% trans "Đóng" %}</button>
             </div>
         </div>
     </div>
@@ -180,11 +181,11 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mb-0"><i class="bi bi-clipboard2-check text-primary"></i> Phiếu tiêm</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                <h5 class="modal-title mb-0"><i class="bi bi-clipboard2-check text-primary"></i> {% trans "Phiếu tiêm" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Đóng' %}"></button>
             </div>
             <div class="modal-body p-0">
-                <iframe id="phieuTiemFrame" title="Xem trước phiếu tiêm" style="width:100%; height:75vh; border:0;"></iframe>
+                <iframe id="phieuTiemFrame" title="{% trans 'Xem trước phiếu tiêm' %}" style="width:100%; height:75vh; border:0;"></iframe>
             </div>
         </div>
     </div>

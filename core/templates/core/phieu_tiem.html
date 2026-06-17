@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<title>Phiếu xác nhận tiêm chủng</title>
+<title>{% trans "Phiếu xác nhận tiêm chủng" %}</title>
 <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #e9ecef; font-family: "Segoe UI", Arial, sans-serif;
@@ -36,44 +37,44 @@
 </head>
 <body>
 <div class="thanh-cong-cu">
-    <button class="btn-in" onclick="window.print()">🖨 In phiếu</button>
+    <button class="btn-in" onclick="window.print()">🖨 {% trans "In phiếu" %}</button>
 </div>
 
 <div class="to">
-    <p class="clinic">PHÒNG KHÁM TIÊM CHỦNG AN TÂM</p>
-    <h1>PHIẾU XÁC NHẬN TIÊM CHỦNG</h1>
+    <p class="clinic">{% trans "PHÒNG KHÁM TIÊM CHỦNG AN TÂM" %}</p>
+    <h1>{% trans "PHIẾU XÁC NHẬN TIÊM CHỦNG" %}</h1>
 
     <div class="tt">
-        <p>Họ và tên: <strong>{{ kh.ho_ten }}</strong></p>
-        <p>Ngày sinh: {{ kh.ngay_sinh|date:"d/m/Y" }} &nbsp; - &nbsp; Giới tính: {{ kh.gioi_tinh }}</p>
+        <p>{% trans "Họ và tên:" %} <strong>{{ kh.ho_ten }}</strong></p>
+        <p>{% trans "Ngày sinh:" %} {{ kh.ngay_sinh|date:"d/m/Y" }} &nbsp; - &nbsp; {% trans "Giới tính:" %} {{ kh.gioi_tinh }}</p>
     </div>
 
     <table>
-        <tr><th>Vắc-xin</th><td>{{ mt.vac_xin.ten }} (phòng {{ mt.vac_xin.phong_benh }})</td></tr>
-        <tr><th>Mũi số</th><td>{{ mt.mui_so }}</td></tr>
-        <tr><th>Ngày tiêm</th><td>{{ mt.ngay_tiem|date:"d/m/Y" }}</td></tr>
-        <tr><th>Số lô (HSD)</th><td>{% if mt.lo %}{{ mt.lo.so_lo }} (HSD {{ mt.lo.han_su_dung|date:"d/m/Y" }}){% else %}—{% endif %}</td></tr>
-        <tr><th>Vị trí tiêm</th><td>{{ mt.vi_tri_tiem|default:"—" }}</td></tr>
-        <tr><th>Người tiêm</th><td>{% if mt.nguoi_tiem %}{{ mt.nguoi_tiem.get_full_name|default:mt.nguoi_tiem.username }}{% else %}—{% endif %}</td></tr>
-        <tr><th>Hẹn mũi kế tiếp</th><td>{{ mt.ngay_hen_mui_ke|date:"d/m/Y"|default:"—" }}</td></tr>
+        <tr><th>{% trans "Vắc-xin" %}</th><td>{% blocktrans with ten=mt.vac_xin.ten benh=mt.vac_xin.phong_benh %}{{ ten }} (phòng {{ benh }}){% endblocktrans %}</td></tr>
+        <tr><th>{% trans "Mũi số" %}</th><td>{{ mt.mui_so }}</td></tr>
+        <tr><th>{% trans "Ngày tiêm" %}</th><td>{{ mt.ngay_tiem|date:"d/m/Y" }}</td></tr>
+        <tr><th>{% trans "Số lô (HSD)" %}</th><td>{% if mt.lo %}{% blocktrans with lo=mt.lo.so_lo hsd=mt.lo.han_su_dung|date:"d/m/Y" %}{{ lo }} (HSD {{ hsd }}){% endblocktrans %}{% else %}—{% endif %}</td></tr>
+        <tr><th>{% trans "Vị trí tiêm" %}</th><td>{{ mt.vi_tri_tiem|default:"—" }}</td></tr>
+        <tr><th>{% trans "Người tiêm" %}</th><td>{% if mt.nguoi_tiem %}{{ mt.nguoi_tiem.get_full_name|default:mt.nguoi_tiem.username }}{% else %}—{% endif %}</td></tr>
+        <tr><th>{% trans "Hẹn mũi kế tiếp" %}</th><td>{{ mt.ngay_hen_mui_ke|date:"d/m/Y"|default:"—" }}</td></tr>
     </table>
 
-    <div class="muc">Theo dõi sau tiêm</div>
+    <div class="muc">{% trans "Theo dõi sau tiêm" %}</div>
     <ul>
         {% for td in theo_doi %}
         <li>{{ td.get_thoi_diem_display }}: {{ td.get_muc_do_display }}{% if td.nhiet_do %} (nhiệt độ {{ td.nhiet_do }}°C){% endif %}{% if td.trieu_chung %} — {{ td.trieu_chung }}{% endif %}</li>
-        {% empty %}<li class="trong">Chưa ghi nhận theo dõi.</li>{% endfor %}
+        {% empty %}<li class="trong">{% trans "Chưa ghi nhận theo dõi." %}</li>{% endfor %}
     </ul>
 
     <div class="ky">
         <div class="cot">
-            <div class="vai">Bác sĩ</div>
-            <div class="it">(ký, ghi rõ họ tên)</div>
+            <div class="vai">{% trans "Bác sĩ" %}</div>
+            <div class="it">{% trans "(ký, ghi rõ họ tên)" %}</div>
             <div class="ten">{% if bac_si %}{{ bac_si.get_full_name|default:bac_si.username }}{% else %}&nbsp;{% endif %}</div>
         </div>
         <div class="cot">
-            <div class="vai">Người tiêm</div>
-            <div class="it">(ký, ghi rõ họ tên)</div>
+            <div class="vai">{% trans "Người tiêm" %}</div>
+            <div class="it">{% trans "(ký, ghi rõ họ tên)" %}</div>
             <div class="ten">{% if mt.nguoi_tiem %}{{ mt.nguoi_tiem.get_full_name|default:mt.nguoi_tiem.username }}{% else %}&nbsp;{% endif %}</div>
         </div>
     </div>

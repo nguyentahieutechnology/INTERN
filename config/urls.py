@@ -19,5 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Route doi ngon ngu (nut VIE/ENG) - cung cap view set_language
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
 ]

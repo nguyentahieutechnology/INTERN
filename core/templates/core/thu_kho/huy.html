@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Hủy vắc-xin{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Hủy vắc-xin" %}{% endblock %}
 
 {% block content %}
-<h3 class="mb-3"><i class="bi bi-box-seam"></i> Khu vực Thủ kho</h3>
+<h3 class="mb-3"><i class="bi bi-box-seam"></i> {% trans "Khu vực Thủ kho" %}</h3>
 {% include 'core/thu_kho/_nav.html' %}
 
 <style>
@@ -19,7 +20,7 @@
          data-bs-toggle="collapse" data-bs-target="#dsCanhBao"
          aria-expanded="true" aria-controls="dsCanhBao" style="cursor:pointer">
         <i class="bi bi-bell-fill"></i>
-        <strong>Có {{ canh_bao_los.count }} lô cần xử lý (đã/sắp hết hạn).</strong>
+        <strong>{% blocktrans with n=canh_bao_los.count %}Có {{ n }} lô cần xử lý (đã/sắp hết hạn).{% endblocktrans %}</strong>
         <i class="bi bi-chevron-down ms-auto cb-chevron"></i>
     </div>
     <div class="collapse show mt-2" id="dsCanhBao">
@@ -28,10 +29,10 @@
             <button type="button" class="list-group-item list-group-item-action cb-item d-flex justify-content-between align-items-center py-2"
                     data-lo="{{ lo.id }}" data-ton="{{ lo.so_luong_ton }}"
                     data-hethan="{% if lo.han_su_dung < today %}1{% else %}0{% endif %}">
-                <span><i class="bi bi-capsule"></i> <strong>{{ lo.vac_xin.ten }}</strong> — lô {{ lo.so_lo }} · tồn {{ lo.so_luong_ton }}</span>
-                <span>HSD {{ lo.han_su_dung|date:"d/m/Y" }}
-                    {% if lo.han_su_dung < today %}<span class="badge text-bg-dark ms-1">Đã hết hạn</span>
-                    {% else %}<span class="badge text-bg-warning text-dark ms-1">Còn {{ lo.han_su_dung|timeuntil }}</span>{% endif %}
+                <span><i class="bi bi-capsule"></i> <strong>{{ lo.vac_xin.ten }}</strong> — {% trans "lô" %} {{ lo.so_lo }} · {% trans "tồn" %} {{ lo.so_luong_ton }}</span>
+                <span>{% trans "HSD" %} {{ lo.han_su_dung|date:"d/m/Y" }}
+                    {% if lo.han_su_dung < today %}<span class="badge text-bg-dark ms-1">{% trans "Đã hết hạn" %}</span>
+                    {% else %}<span class="badge text-bg-warning text-dark ms-1">{% blocktrans with t=lo.han_su_dung|timeuntil %}Còn {{ t }}{% endblocktrans %}</span>{% endif %}
                 </span>
             </button>
             {% endfor %}
@@ -43,39 +44,39 @@
 <div class="row g-3">
     <div class="col-lg-5">
         <div class="card shadow-sm" id="card-huy">
-            <div class="card-header bg-danger text-white"><strong><i class="bi bi-trash"></i> Hủy vắc-xin</strong></div>
+            <div class="card-header bg-danger text-white"><strong><i class="bi bi-trash"></i> {% trans "Hủy vắc-xin" %}</strong></div>
             <div class="card-body">
                 {% if loi %}<div class="alert alert-danger py-2 small">{{ loi }}</div>{% endif %}
                 <form method="post" action="{% url 'thu_kho_huy' %}">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label class="form-label">Lô vắc-xin</label>
+                        <label class="form-label">{% trans "Lô vắc-xin" %}</label>
                         <select name="lo" class="form-select" required>
-                            <option value="">-- Chọn lô cần hủy --</option>
+                            <option value="">{% trans "-- Chọn lô cần hủy --" %}</option>
                             {% for lo in los %}
                             <option value="{{ lo.id }}">
-                                {{ lo.vac_xin.ten }} — lô {{ lo.so_lo }} — tồn {{ lo.so_luong_ton }} — HSD {{ lo.han_su_dung|date:"d/m/Y" }}{% if lo.han_su_dung < today %} (ĐÃ HẾT HẠN){% endif %}
+                                {{ lo.vac_xin.ten }} — {% trans "lô" %} {{ lo.so_lo }} — {% trans "tồn" %} {{ lo.so_luong_ton }} — {% trans "HSD" %} {{ lo.han_su_dung|date:"d/m/Y" }}{% if lo.han_su_dung < today %} {% trans "(ĐÃ HẾT HẠN)" %}{% endif %}
                             </option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Số lượng hủy</label>
+                        <label class="form-label">{% trans "Số lượng hủy" %}</label>
                         <input type="number" name="so_luong" class="form-control" min="1" value="1" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Lý do</label>
+                        <label class="form-label">{% trans "Lý do" %}</label>
                         <select name="ly_do" class="form-select">
                             {% for ma, ten in ly_do_choices %}<option value="{{ ma }}">{{ ten }}</option>{% endfor %}
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Ghi chú</label>
-                        <input type="text" name="ghi_chu" class="form-control" placeholder="Mô tả thêm (tùy chọn)">
+                        <label class="form-label">{% trans "Ghi chú" %}</label>
+                        <input type="text" name="ghi_chu" class="form-control" placeholder="{% trans 'Mô tả thêm (tùy chọn)' %}">
                     </div>
                     <button class="btn btn-outline-danger w-100"
-                            onclick="return confirm('Xác nhận hủy số lượng vắc-xin này? Thao tác sẽ trừ tồn kho.')">
-                        <i class="bi bi-trash"></i> Xác nhận hủy
+                            onclick="return confirm('{% trans "Xác nhận hủy số lượng vắc-xin này? Thao tác sẽ trừ tồn kho." %}')">
+                        <i class="bi bi-trash"></i> {% trans "Xác nhận hủy" %}
                     </button>
                 </form>
             </div>
@@ -84,11 +85,11 @@
 
     <div class="col-lg-7">
         <div class="card shadow-sm">
-            <div class="card-header bg-white"><strong>Lịch sử hủy</strong></div>
+            <div class="card-header bg-white"><strong>{% trans "Lịch sử hủy" %}</strong></div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
-                        <tr><th>Thời gian</th><th>Vắc-xin</th><th>Lô</th><th>SL</th><th>Lý do</th><th>Người hủy</th></tr>
+                        <tr><th>{% trans "Thời gian" %}</th><th>{% trans "Vắc-xin" %}</th><th>{% trans "Lô" %}</th><th>{% trans "SL" %}</th><th>{% trans "Lý do" %}</th><th>{% trans "Người hủy" %}</th></tr>
                     </thead>
                     <tbody>
                         {% for p in lich_su %}
@@ -101,7 +102,7 @@
                             <td>{{ p.nguoi_huy.get_full_name|default:p.nguoi_huy.username|default:"-" }}</td>
                         </tr>
                         {% empty %}
-                        <tr><td colspan="6" class="text-center text-muted py-4">Chưa có lần hủy nào.</td></tr>
+                        <tr><td colspan="6" class="text-center text-muted py-4">{% trans "Chưa có lần hủy nào." %}</td></tr>
                         {% endfor %}
                     </tbody>
                 </table>

@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block title %}Lễ tân - Đăng ký tiêm{% endblock %}
+{% load static i18n %}
+{% block title %}{% trans "Lễ tân - Đăng ký tiêm" %}{% endblock %}
 
 {% block content %}
-<h3 class="mb-3"><i class="bi bi-clipboard-check"></i> Khu vực Lễ tân</h3>
+<h3 class="mb-3"><i class="bi bi-clipboard-check"></i> {% trans "Khu vực Lễ tân" %}</h3>
 {% include 'core/le_tan/_nav.html' %}
 
 <div class="row justify-content-center">
     <div class="col-md-8 col-lg-7">
         <div class="card shadow-sm">
             <div class="card-body p-4">
-                <h5 class="mb-3"><i class="bi bi-clipboard-plus text-primary"></i> Đăng ký tiêm cho khách (tại quầy)</h5>
+                <h5 class="mb-3"><i class="bi bi-clipboard-plus text-primary"></i> {% trans "Đăng ký tiêm cho khách (tại quầy)" %}</h5>
 
                 {% if form.non_field_errors %}
                 <div class="alert alert-danger py-2 small">{{ form.non_field_errors|striptags }}</div>
@@ -47,7 +47,7 @@
                     {% include 'core/_field.html' with field=form.ghi_chu %}
 
                     <button type="submit" class="btn btn-outline-primary w-100">
-                        <i class="bi bi-check-circle"></i> Đăng ký tiêm
+                        <i class="bi bi-check-circle"></i> {% trans "Đăng ký tiêm" %}
                     </button>
                 </form>
             </div>

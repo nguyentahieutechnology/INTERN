@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}Lịch sử xuất kho{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Lịch sử xuất kho" %}{% endblock %}
 
 {% block content %}
-<h3 class="mb-3"><i class="bi bi-box-seam"></i> Khu vực Thủ kho</h3>
+<h3 class="mb-3"><i class="bi bi-box-seam"></i> {% trans "Khu vực Thủ kho" %}</h3>
 {% include 'core/thu_kho/_nav.html' %}
 
 <div class="card shadow-sm">
-    <div class="card-header bg-white"><strong>Lịch sử xuất kho</strong></div>
+    <div class="card-header bg-white"><strong>{% trans "Lịch sử xuất kho" %}</strong></div>
     <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">
             <thead class="table-light">
-                <tr><th>Thời gian</th><th>Vắc-xin</th><th>Số lô</th><th>Hạn sử dụng</th><th>SL</th><th>Khách hàng</th><th>Người xuất</th><th>Phiếu</th></tr>
+                <tr><th>{% trans "Thời gian" %}</th><th>{% trans "Vắc-xin" %}</th><th>{% trans "Số lô" %}</th><th>{% trans "Hạn sử dụng" %}</th><th>{% trans "SL" %}</th><th>{% trans "Khách hàng" %}</th><th>{% trans "Người xuất" %}</th><th>{% trans "Phiếu" %}</th></tr>
             </thead>
             <tbody>
                 {% for p in ds %}
@@ -25,12 +26,12 @@
                     <td>
                         <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                                 data-bs-target="#modalPhieuXuat" data-pdf="{% url 'phieu_xuat_kho_pdf' p.id %}">
-                            <i class="bi bi-file-earmark-pdf"></i> Phiếu
+                            <i class="bi bi-file-earmark-pdf"></i> {% trans "Phiếu" %}
                         </button>
                     </td>
                 </tr>
                 {% empty %}
-                <tr><td colspan="8" class="text-center text-muted py-4">Chưa có lần xuất kho nào.</td></tr>
+                <tr><td colspan="8" class="text-center text-muted py-4">{% trans "Chưa có lần xuất kho nào." %}</td></tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -42,11 +43,11 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mb-0"><i class="bi bi-file-earmark-pdf text-danger"></i> Phiếu xuất kho</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                <h5 class="modal-title mb-0"><i class="bi bi-file-earmark-pdf text-danger"></i> {% trans "Phiếu xuất kho" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Đóng' %}"></button>
             </div>
             <div class="modal-body p-0">
-                <iframe id="phieuXuatFrame" title="Xem trước phiếu xuất kho" style="width:100%; height:78vh; border:0;"></iframe>
+                <iframe id="phieuXuatFrame" title="{% trans 'Xem trước phiếu xuất kho' %}" style="width:100%; height:78vh; border:0;"></iframe>
             </div>
         </div>
     </div>
