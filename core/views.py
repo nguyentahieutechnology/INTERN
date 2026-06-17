@@ -13,6 +13,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 
 from core.forms import (DangKyForm, DatLichForm, KhachHangForm,
@@ -50,7 +51,7 @@ def quen_mat_khau(request):
         username = (request.POST.get('username') or '').strip()
         user = User.objects.filter(username=username).first()
         if not user:
-            messages.error(request, f'Không tìm thấy tài khoản "{username}".')
+            messages.error(request, _('Không tìm thấy tài khoản "%(u)s".') % {'u': username})
         else:
             yc, created = YeuCauDatLaiMatKhau.objects.get_or_create(
                 user=user, da_xu_ly=False)
@@ -61,8 +62,8 @@ def quen_mat_khau(request):
                         noi_dung=f'Yêu cầu đặt lại mật khẩu từ tài khoản "{username}".',
                         duong_dan=reverse('quan_tri_yeu_cau_mat_khau'))
             messages.success(request,
-                             'Đã gửi yêu cầu tới quản trị. Vui lòng chờ được cấp lại '
-                             'mật khẩu rồi đăng nhập lại.')
+                             _('Đã gửi yêu cầu tới quản trị. Vui lòng chờ được cấp lại '
+                               'mật khẩu rồi đăng nhập lại.'))
             return redirect('dang_nhap')
     return render(request, 'core/quen_mat_khau.html')
 
@@ -231,7 +232,7 @@ def khach_huy_lich(request, lich_id):
         lh.save()
         _bao_le_tan(f'Khách "{lh.khach_hang.ho_ten}" đã tự hủy lịch hẹn '
                     f'ngày {lh.ngay_hen:%d/%m/%Y}.', reverse('le_tan_lich_hen'))
-        messages.success(request, 'Đã hủy lịch hẹn.')
+        messages.success(request, _('Đã hủy lịch hẹn.'))
     return redirect('ho_so_chi_tiet', pk=lh.khach_hang_id)
 
 
@@ -243,7 +244,7 @@ def khach_sua_ho_so(request, pk):
         form = KhachHangForm(request.POST, instance=kh)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Đã cập nhật thông tin.')
+            messages.success(request, _('Đã cập nhật thông tin.'))
             return redirect('ho_so_chi_tiet', pk=kh.id)
     else:
         form = KhachHangForm(instance=kh)
@@ -1087,9 +1088,9 @@ def nhac_khach(request, pk):
             noi_dung += '. Vui lòng đặt lịch hẹn.'
             ThongBao.objects.create(nguoi_nhan=kh.user, noi_dung=noi_dung,
                                     duong_dan=reverse('dat_lich'))
-            messages.success(request, f'Đã gửi nhắc cho {kh.ho_ten}.')
+            messages.success(request, _('Đã gửi nhắc cho %(ten)s.') % {'ten': kh.ho_ten})
         else:
-            messages.warning(request, f'{kh.ho_ten} chưa có tài khoản để nhận thông báo.')
+            messages.warning(request, _('%(ten)s chưa có tài khoản để nhận thông báo.') % {'ten': kh.ho_ten})
     return redirect(request.META.get('HTTP_REFERER') or 'bao_cao_nhac_mui')
 
 
@@ -1153,7 +1154,7 @@ def le_tan_tai_kham(request):
             if 'Tái khám sau phản ứng' not in (lich.ghi_chu or ''):
                 lich.ghi_chu = ('Tái khám sau phản ứng tiêm. ' + (lich.ghi_chu or '')).strip()
             lich.save()
-            messages.success(request, 'Đã đặt lịch tái khám.')
+            messages.success(request, _('Đã đặt lịch tái khám.'))
             return redirect('le_tan_lich_hen')
     else:
         bay_gio = timezone.localtime()
@@ -1523,7 +1524,7 @@ def dieu_duong_xu_ly_phan_ung(request, pk):
                 _bao_le_tan(f'Khách "{kh.ho_ten}" cần quay lại tái khám sau phản ứng tiêm.'
                             + (f' Lý do: {ly_do}.' if ly_do else '')
                             + ' Bấm để đặt lịch.', duong_dan)
-                messages.success(request, f'Đã chuyển yêu cầu tái khám của "{kh.ho_ten}" cho lễ tân.')
+                messages.success(request, _('Đã chuyển yêu cầu tái khám của "%(ten)s" cho lễ tân.') % {'ten': kh.ho_ten})
             else:
                 # Phan hoi truc tiep cho khach
                 noi_dung = ly_do if (xu_ly == 'khac' and ly_do) else td.get_xu_ly_display()
@@ -1532,7 +1533,7 @@ def dieu_duong_xu_ly_phan_ung(request, pk):
                         nguoi_nhan=kh.user,
                         noi_dung=f'Phản hồi theo dõi sau tiêm: {noi_dung}.',
                         duong_dan='')
-                messages.success(request, f'Đã ghi nhận xử lý cho "{kh.ho_ten}".')
+                messages.success(request, _('Đã ghi nhận xử lý cho "%(ten)s".') % {'ten': kh.ho_ten})
     return redirect('dieu_duong_dashboard')
 
 
@@ -1723,7 +1724,7 @@ def thu_kho_nhap_excel(request):
         try:
             wb = openpyxl.load_workbook(request.FILES['file'], data_only=True)
         except Exception:
-            messages.error(request, 'Không đọc được file. Vui lòng dùng đúng định dạng .xlsx.')
+            messages.error(request, _('Không đọc được file. Vui lòng dùng đúng định dạng .xlsx.'))
             return redirect('thu_kho_nhap_excel')
         ws = wb.active
         thanh_cong, loi = 0, []
@@ -1755,9 +1756,9 @@ def thu_kho_nhap_excel(request):
                 loi.append(f'Dòng {i}: {chi_tiet}')
         if thanh_cong:
             _ghi_lich_su(request, f'Nhập kho {thanh_cong} lô từ Excel')
-            messages.success(request, f'Đã nhập thành công {thanh_cong} lô.')
+            messages.success(request, _('Đã nhập thành công %(n)s lô.') % {'n': thanh_cong})
         if loi:
-            messages.warning(request, f'{len(loi)} dòng bị bỏ qua do lỗi.')
+            messages.warning(request, _('%(n)s dòng bị bỏ qua do lỗi.') % {'n': len(loi)})
         ket_qua = {'thanh_cong': thanh_cong, 'loi': loi}
     return render(request, 'core/thu_kho/nhap_excel.html', {'ket_qua': ket_qua})
 
@@ -1969,14 +1970,14 @@ def _canh_bao_phac_do_tuoi(request, pd):
     for ct in pd.chi_tiet.select_related('vac_xin'):
         vx = ct.vac_xin
         if pd.nhom == 'tre_em' and vx.do_tuoi_min_thang >= TUOI_NGUOI_LON_MIN_THANG:
-            canh_bao.append(f'"{vx.ten}" chỉ dành cho người lớn '
-                            f'(từ {vx.do_tuoi_min_thang} tháng)')
+            canh_bao.append(_('"%(ten)s" chỉ dành cho người lớn (từ %(thang)s tháng)')
+                            % {'ten': vx.ten, 'thang': vx.do_tuoi_min_thang})
         elif pd.nhom == 'nguoi_lon' and vx.do_tuoi_max_thang <= TUOI_TRE_EM_MAX_THANG:
-            canh_bao.append(f'"{vx.ten}" chỉ dành cho trẻ em '
-                            f'(đến {vx.do_tuoi_max_thang} tháng)')
+            canh_bao.append(_('"%(ten)s" chỉ dành cho trẻ em (đến %(thang)s tháng)')
+                            % {'ten': vx.ten, 'thang': vx.do_tuoi_max_thang})
     if canh_bao:
         messages.warning(request,
-                         'Lưu ý độ tuổi không khớp nhóm phác đồ: '
+                         _('Lưu ý độ tuổi không khớp nhóm phác đồ: ')
                          + '; '.join(canh_bao) + '.')
 
 
@@ -1989,7 +1990,7 @@ def quan_tri_tai_khoan(request):
             nv = form.save()
             _ghi_lich_su(request, f'Tạo tài khoản "{nv.username}" '
                                   f'(vai trò {form.cleaned_data["vai_tro"]})')
-            messages.success(request, f'Đã tạo tài khoản "{nv.username}".')
+            messages.success(request, _('Đã tạo tài khoản "%(u)s".') % {'u': nv.username})
             return redirect('quan_tri_tai_khoan')
     else:
         form = TaiKhoanNhanVienForm()
@@ -2022,7 +2023,7 @@ def quan_tri_tai_khoan_sua(request, pk):
     """Sua thong tin + vai tro + mat khau nhan vien."""
     nv = get_object_or_404(User, pk=pk, is_staff=True)
     if nv.is_superuser:
-        messages.warning(request, 'Không thể sửa tài khoản quản trị cấp cao.')
+        messages.warning(request, _('Không thể sửa tài khoản quản trị cấp cao.'))
         return redirect('quan_tri_tai_khoan')
     if request.method == 'POST':
         form = SuaNhanVienForm(request.POST)
@@ -2038,7 +2039,7 @@ def quan_tri_tai_khoan_sua(request, pk):
             nv.groups.add(nhom)
             _ghi_lich_su(request, f'Sửa tài khoản "{nv.username}" '
                                   f'(vai trò {form.cleaned_data["vai_tro"]})')
-            messages.success(request, f'Đã cập nhật tài khoản "{nv.username}".')
+            messages.success(request, _('Đã cập nhật tài khoản "%(u)s".') % {'u': nv.username})
             return redirect('quan_tri_tai_khoan')
     else:
         vai_tro_hien = nv.groups.values_list('name', flat=True).first() or 'Le tan'
@@ -2055,7 +2056,10 @@ def quan_tri_tai_khoan_khoa(request, pk):
         nv.save()
         trang_thai = 'Khóa' if not nv.is_active else 'Mở khóa'
         _ghi_lich_su(request, f'{trang_thai} tài khoản "{nv.username}"')
-        messages.success(request, f'Đã {trang_thai.lower()} "{nv.username}".')
+        if nv.is_active:
+            messages.success(request, _('Đã mở khóa "%(u)s".') % {'u': nv.username})
+        else:
+            messages.success(request, _('Đã khóa "%(u)s".') % {'u': nv.username})
     return redirect('quan_tri_tai_khoan')
 
 
@@ -2067,7 +2071,7 @@ def quan_tri_vac_xin(request):
         if form.is_valid():
             vx = form.save()
             _ghi_lich_su(request, f'Thêm vắc-xin "{vx.ten}"')
-            messages.success(request, f'Đã thêm vắc-xin "{vx.ten}".')
+            messages.success(request, _('Đã thêm vắc-xin "%(ten)s".') % {'ten': vx.ten})
             return redirect('quan_tri_vac_xin')
     else:
         form = VacXinForm()
@@ -2084,7 +2088,7 @@ def quan_tri_vac_xin_sua(request, pk):
         if form.is_valid():
             form.save()
             _ghi_lich_su(request, f'Sửa vắc-xin "{vx.ten}"')
-            messages.success(request, f'Đã cập nhật "{vx.ten}".')
+            messages.success(request, _('Đã cập nhật "%(ten)s".') % {'ten': vx.ten})
             return redirect('quan_tri_vac_xin')
     else:
         form = VacXinForm(instance=vx)
@@ -2100,10 +2104,10 @@ def quan_tri_vac_xin_xoa(request, pk):
         try:
             vx.delete()
             _ghi_lich_su(request, f'Xóa vắc-xin "{ten}"')
-            messages.success(request, f'Đã xóa vắc-xin "{ten}".')
+            messages.success(request, _('Đã xóa vắc-xin "%(ten)s".') % {'ten': ten})
         except ProtectedError:
             messages.warning(request,
-                             f'Không thể xóa "{ten}" vì đang có mũi tiêm sử dụng.')
+                             _('Không thể xóa "%(ten)s" vì đang có mũi tiêm sử dụng.') % {'ten': ten})
     return redirect('quan_tri_vac_xin')
 
 
@@ -2116,7 +2120,7 @@ def quan_tri_phac_do(request):
             pd = form.save()
             _ghi_lich_su(request, f'Thêm phác đồ "{pd.ten}"')
             messages.success(request,
-                             f'Đã tạo phác đồ "{pd.ten}". Thêm các mũi tiêm bên dưới.')
+                             _('Đã tạo phác đồ "%(ten)s". Thêm các mũi tiêm bên dưới.') % {'ten': pd.ten})
             return redirect('quan_tri_phac_do_sua', pk=pd.pk)
     else:
         form = PhacDoForm()
@@ -2136,7 +2140,7 @@ def quan_tri_phac_do_sua(request, pk):
             formset.save()
             _canh_bao_phac_do_tuoi(request, pd)
             _ghi_lich_su(request, f'Sửa phác đồ "{pd.ten}"')
-            messages.success(request, f'Đã lưu phác đồ "{pd.ten}".')
+            messages.success(request, _('Đã lưu phác đồ "%(ten)s".') % {'ten': pd.ten})
             return redirect('quan_tri_phac_do')
     else:
         form = PhacDoForm(instance=pd)
@@ -2154,10 +2158,10 @@ def quan_tri_phac_do_xoa(request, pk):
         try:
             pd.delete()
             _ghi_lich_su(request, f'Xóa phác đồ "{ten}"')
-            messages.success(request, f'Đã xóa phác đồ "{ten}".')
+            messages.success(request, _('Đã xóa phác đồ "%(ten)s".') % {'ten': ten})
         except ProtectedError:
             messages.warning(request,
-                             f'Không thể xóa "{ten}" vì đang được sử dụng.')
+                             _('Không thể xóa "%(ten)s" vì đang được sử dụng.') % {'ten': ten})
     return redirect('quan_tri_phac_do')
 
 
@@ -2183,7 +2187,7 @@ def quan_tri_yeu_cau_xu_ly(request, pk):
     if request.method == 'POST':
         mk = (request.POST.get('mat_khau_moi') or '').strip()
         if len(mk) < 6:
-            messages.error(request, 'Mật khẩu mới phải từ 6 ký tự trở lên.')
+            messages.error(request, _('Mật khẩu mới phải từ 6 ký tự trở lên.'))
         else:
             u = yc.user
             u.set_password(mk)
@@ -2199,7 +2203,7 @@ def quan_tri_yeu_cau_xu_ly(request, pk):
                     duong_dan='')
             _ghi_lich_su(request, f'Đặt lại mật khẩu cho "{u.username}"')
             _bao_le_tan(f'Mật khẩu tài khoản "{u.username}" đã được quản trị đặt lại.')
-            messages.success(request, f'Đã đặt lại mật khẩu cho "{u.username}".')
+            messages.success(request, _('Đã đặt lại mật khẩu cho "%(u)s".') % {'u': u.username})
     return redirect('quan_tri_yeu_cau_mat_khau')
 
 
@@ -2220,5 +2224,5 @@ def quan_tri_yeu_cau_tu_choi(request, pk):
                 duong_dan='')
         _ghi_lich_su(request, f'Từ chối yêu cầu đặt lại mật khẩu của "{yc.user.username}"')
         _bao_le_tan(f'Yêu cầu đặt lại mật khẩu của "{yc.user.username}" đã bị từ chối.')
-        messages.info(request, f'Đã từ chối yêu cầu của "{yc.user.username}".')
+        messages.info(request, _('Đã từ chối yêu cầu của "%(u)s".') % {'u': yc.user.username})
     return redirect('quan_tri_yeu_cau_mat_khau')

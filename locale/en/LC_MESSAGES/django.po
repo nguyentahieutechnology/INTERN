@@ -9,6 +9,12 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "\"%(ten)s\" chỉ dành cho người lớn (từ %(thang)s tháng)"
+msgstr "\"%(ten)s\" is for adults only (from %(thang)s months)"
+
+msgid "\"%(ten)s\" chỉ dành cho trẻ em (đến %(thang)s tháng)"
+msgstr "\"%(ten)s\" is for children only (up to %(thang)s months)"
+
 msgid "\"Đủ điều kiện\" → sang thanh toán; Hoãn/Chống → hủy lịch."
 msgstr "\"Eligible\" → proceed to payment; Postpone/Contraindicate → cancel appointment."
 
@@ -18,11 +24,17 @@ msgstr "%(lo)s (expiry %(hsd)s)"
 msgid "%(m)s tháng"
 msgstr "%(m)s months"
 
+msgid "%(n)s dòng bị bỏ qua do lỗi."
+msgstr "%(n)s rows skipped due to errors."
+
 msgid "%(ten)s (mũi %(so)s)"
 msgstr "%(ten)s (dose %(so)s)"
 
 msgid "%(ten)s (phòng %(benh)s)"
 msgstr "%(ten)s (prevents %(benh)s)"
+
+msgid "%(ten)s chưa có tài khoản để nhận thông báo."
+msgstr "%(ten)s does not have an account to receive notifications."
 
 msgid "(cách mũi trước %(d)s ngày)"
 msgstr "(%(d)s days after the previous dose)"
@@ -45,6 +57,9 @@ msgstr "-- Select batch to discard --"
 msgid "-- Chọn lý do --"
 msgstr "-- Select reason --"
 
+msgid ". Mỗi mũi phải có số thứ tự khác nhau."
+msgstr ". Each dose must have a distinct number."
+
 msgid "14 ngày tới"
 msgstr "Next 14 days"
 
@@ -63,17 +78,41 @@ msgstr "Dr: %(bs)s"
 msgid "BV: %(bv)s"
 msgstr "Hospital: %(bv)s"
 
+msgid "Bac si chi dinh"
+msgstr "Prescribing doctor"
+
+msgid "Bac si sang loc"
+msgstr "Screening doctor"
+
+msgid "Benh di truyen"
+msgstr "Hereditary diseases"
+
+msgid "Benh vien chi dinh"
+msgstr "Prescribing hospital"
+
+msgid "Binh thuong"
+msgstr "Normal"
+
 msgid "Bác sĩ"
 msgstr "Doctor"
 
 msgid "Bác sĩ - Hàng chờ"
 msgstr "Doctor - Queue"
 
+msgid "Bác sĩ chỉ định"
+msgstr "Prescribing doctor"
+
+msgid "Bác sĩ khám"
+msgstr "Doctor examination"
+
 msgid "Bác sĩ khám lại sau phản ứng. Ghi nhận kết quả rồi hoàn tất."
 msgstr "Doctor re-examines after reaction. Record results then finish."
 
 msgid "Bác sĩ khám sàng lọc trước tiêm."
 msgstr "Doctor performs pre-vaccination screening."
+
+msgid "Bác sĩ sàng lọc"
+msgstr "Doctor screening"
 
 msgid "Bác sĩ đánh giá sức khỏe, đảm bảo đủ điều kiện tiêm an toàn."
 msgstr "Doctors assess your health to ensure you are eligible for safe vaccination."
@@ -105,6 +144,9 @@ msgstr "You have no doses to monitor yet. Please book and complete a vaccination
 msgid "Bạn không có quyền truy cập trang này"
 msgstr "You do not have permission to access this page"
 
+msgid "Bản thân"
+msgstr "Self"
+
 msgid "Bảng giá"
 msgstr "Price List"
 
@@ -132,17 +174,41 @@ msgstr "Hereditary disease"
 msgid "Bệnh nhân"
 msgstr "Patient"
 
+msgid "Bệnh viện chỉ định"
+msgstr "Prescribing hospital"
+
+msgid "Bố/Mẹ"
+msgstr "Parent"
+
+msgid "CCCD/CMND"
+msgstr "ID card number"
+
 msgid "CCCD/CMND:"
 msgstr "ID number:"
 
 msgid "Ca cần chú ý / phản ứng nặng"
 msgstr "Cases needing attention / severe reactions"
 
+msgid "Can chu y"
+msgstr "Needs attention"
+
+msgid "Cap nhat"
+msgstr "Updated"
+
+msgid "Chi tiet phac do"
+msgstr "Schedule detail"
+
 msgid "Chi tiết"
 msgstr "Details"
 
 msgid "Chi tiết quá trình tiêm"
 msgstr "Vaccination process details"
+
+msgid "Chong chi dinh"
+msgstr "Contraindicated"
+
+msgid "Chuyen khoan"
+msgstr "Bank transfer"
 
 msgid "Chuyển khoản"
 msgstr "Bank transfer"
@@ -261,6 +327,9 @@ msgstr "Pending confirmation"
 msgid "Chờ xử lý"
 msgstr "Pending"
 
+msgid "Con"
+msgstr "Child"
+
 msgid "Các mũi tiêm trong phác đồ"
 msgstr "Doses in the schedule"
 
@@ -300,6 +369,15 @@ msgstr "Update information - %(ten)s"
 msgid "Cập nhật thông tin: %(ten)s"
 msgstr "Update information: %(ten)s"
 
+msgid "Da doc"
+msgstr "Read"
+
+msgid "Da xu ly"
+msgstr "Processed"
+
+msgid "Dang dung thuoc"
+msgstr "Currently taking medication"
+
 msgid "Danh mục phác đồ (%(c)s)"
 msgstr "Schedule list (%(c)s)"
 
@@ -321,6 +399,21 @@ msgstr "Overview dashboard"
 msgid "Di truyền:"
 msgstr "Hereditary:"
 
+msgid "Di ung"
+msgstr "Allergies"
+
+msgid "Dia chi"
+msgstr "Address"
+
+msgid "Dieu duong nhan"
+msgstr "Receiving nurse"
+
+msgid "Do tuoi toi da (thang)"
+msgstr "Maximum age (months)"
+
+msgid "Do tuoi toi thieu (thang)"
+msgstr "Minimum age (months)"
+
 msgid "Doanh thu"
 msgstr "Revenue"
 
@@ -330,11 +423,23 @@ msgstr "Revenue over the last 6 months"
 msgid "Doanh thu tháng này"
 msgstr "Revenue this month"
 
+msgid "Doi tuong ap dung"
+msgstr "Applicable subjects"
+
+msgid "Du dieu kien tiem"
+msgstr "Eligible for vaccination"
+
+msgid "Duong dan"
+msgstr "Link"
+
 msgid "Dòng lỗi sẽ được bỏ qua và liệt kê bên dưới sau khi nhập."
 msgstr "Invalid rows are skipped and listed below after import."
 
 msgid "Dị ứng"
 msgstr "Allergy"
+
+msgid "Dị ứng nặng với thành phần của vắc-xin"
+msgstr "Severe allergy to a vaccine component"
 
 msgid "Dị ứng:"
 msgstr "Allergy:"
@@ -348,8 +453,20 @@ msgstr "Our services"
 msgid "File Excel cần các cột theo đúng thứ tự (dòng 1 là tiêu đề):"
 msgstr "The Excel file needs columns in this exact order (row 1 is the header):"
 
+msgid "Ghi chu"
+msgstr "Note"
+
+msgid "Ghi chu sang loc"
+msgstr "Screening note"
+
+msgid "Ghi chu/ly do xu ly"
+msgstr "Note/reason for handling"
+
 msgid "Ghi chú"
 msgstr "Notes"
+
+msgid "Ghi chú (tùy chọn)"
+msgstr "Note (optional)"
 
 msgid "Ghi chú: %(gc)s"
 msgstr "Note: %(gc)s"
@@ -369,8 +486,20 @@ msgstr "Remember me"
 msgid "Ghi theo dõi"
 msgstr "Record observation"
 
+msgid "Gia (VND)"
+msgstr "Price (VND)"
+
+msgid "Giai doan"
+msgstr "Stage"
+
 msgid "Giai đoạn hiện tại"
 msgstr "Current stage"
+
+msgid "Gio hen"
+msgstr "Appointment time"
+
+msgid "Gioi tinh"
+msgstr "Gender"
 
 msgid "Giá"
 msgstr "Price"
@@ -390,8 +519,20 @@ msgstr "Gender:"
 msgid "Giờ"
 msgstr "Time"
 
+msgid "Giờ hẹn"
+msgstr "Appointment time"
+
+msgid "Giờ hẹn (tùy chọn)"
+msgstr "Appointment time (optional)"
+
+msgid "Goi / Phac do (tuy chon)"
+msgstr "Package / Schedule (optional)"
+
 msgid "Gói tiêm"
 msgstr "Vaccine package"
+
+msgid "Gói tiêm / Phác đồ (tùy chọn)"
+msgstr "Vaccination package / Schedule (optional)"
 
 msgid "Gói vắc xin"
 msgstr "Vaccine Packages"
@@ -417,11 +558,32 @@ msgstr "BP"
 msgid "HSD"
 msgstr "Exp."
 
+msgid "HSD còn lại %(con_lai)s ngày — chưa đạt 50%% tổng hạn dùng "
+msgstr "Remaining shelf life is %(con_lai)s days — below 50%% of total shelf life "
+
 msgid "HSD phải đạt quy định (≥ 50% tổng hạn dùng tính từ ngày nhập)."
 msgstr "Expiry must meet the rule (≥ 50% of total shelf life from the stock-in date)."
 
+msgid "Han su dung"
+msgstr "Expiry date"
+
+msgid "Hanh dong"
+msgstr "Action"
+
+msgid "Hinh thuc chi dinh"
+msgstr "Type of prescription"
+
 msgid "Hiện có %(so_vacxin)s loại vắc-xin"
 msgstr "Currently %(so_vacxin)s vaccine types available"
+
+msgid "Ho ten"
+msgstr "Full name"
+
+msgid "Hoan tiem"
+msgstr "Postpone vaccination"
+
+msgid "Hoàn tất"
+msgstr "Completed"
 
 msgid "Hoàn tất khám"
 msgstr "Finish examination"
@@ -432,6 +594,12 @@ msgstr "Postponed"
 msgid "Hoạt động"
 msgstr "Active"
 
+msgid "Huong xu ly"
+msgstr "Handling action"
+
+msgid "Huyet ap"
+msgstr "Blood pressure"
+
 msgid "Huyết áp"
 msgstr "Blood pressure"
 
@@ -440,6 +608,9 @@ msgstr "Queue"
 
 msgid "Hành động"
 msgstr "Action"
+
+msgid "Hình thức chỉ định"
+msgstr "Type of prescription"
 
 msgid "Hôm nay"
 msgstr "Today"
@@ -459,6 +630,9 @@ msgstr "Expiry"
 msgid "Hạn sử dụng"
 msgstr "Expiry date"
 
+msgid "Hạn sử dụng phải sau ngày nhập."
+msgstr "Expiry date must be after the entry date."
+
 msgid "Hẹn"
 msgstr "Due"
 
@@ -466,6 +640,9 @@ msgid "Hẹn mũi kế tiếp"
 msgstr "Next dose appointment"
 
 msgid "Hết hạn"
+msgstr "Expired"
+
+msgid "Hết hạn sử dụng"
 msgstr "Expired"
 
 msgid "Hệ thống Tiêm chủng"
@@ -479,6 +656,9 @@ msgstr "Full name"
 
 msgid "Họ tên:"
 msgstr "Full name:"
+
+msgid "Họ và tên"
+msgstr "Full name"
 
 msgid "Họ và tên:"
 msgstr "Full name:"
@@ -504,8 +684,26 @@ msgstr "Discard Vaccine"
 msgid "In phiếu"
 msgstr "Print"
 
+msgid "Ket luan"
+msgstr "Conclusion"
+
+msgid "Khac"
+msgstr "Other"
+
+msgid "Khach (chu hoi thoai)"
+msgstr "Customer (conversation owner)"
+
+msgid "Khach hang"
+msgstr "Customer"
+
 msgid "Kho"
 msgstr "Warehouse"
+
+msgid "Kho - Lo vac-xin"
+msgstr "Inventory - Vaccine batches"
+
+msgid "Khoang cach den mui truoc (ngay)"
+msgstr "Interval from previous dose (days)"
 
 msgid "Khu vực Bác sĩ"
 msgstr "Doctor area"
@@ -548,6 +746,12 @@ msgstr "Customer:"
 
 msgid "Khách tự chọn"
 msgstr "Customer's choice"
+
+msgid "Khách đang chờ"
+msgstr "Customer waiting"
+
+msgid "Khách đã tới"
+msgstr "Customer has arrived"
 
 msgid "Khách đến hạn nhắc mũi"
 msgstr "Customers due for dose reminders"
@@ -612,14 +816,29 @@ msgstr "No accounts with role \"%(vt)s\""
 msgid "Không có đơn chờ xuất kho."
 msgstr "No orders awaiting stock-out."
 
+msgid "Không thể sửa tài khoản quản trị cấp cao."
+msgstr "Cannot edit a high-level administrator account."
+
+msgid "Không thể xóa \"%(ten)s\" vì đang có mũi tiêm sử dụng."
+msgstr "Cannot delete \"%(ten)s\" because it is used by existing injections."
+
+msgid "Không thể xóa \"%(ten)s\" vì đang được sử dụng."
+msgstr "Cannot delete \"%(ten)s\" because it is in use."
+
 msgid "Không thể đặt lại tài khoản quản trị cấp cao."
 msgstr "Cannot reset a high-level administrator account."
 
 msgid "Không tìm thấy khách hàng."
 msgstr "No customers found."
 
+msgid "Không tìm thấy tài khoản \"%(u)s\"."
+msgstr "Account \"%(u)s\" not found."
+
 msgid "Không tìm thấy vắc-xin phù hợp."
 msgstr "No matching vaccines found."
+
+msgid "Không đọc được file. Vui lòng dùng đúng định dạng .xlsx."
+msgstr "Could not read the file. Please use a valid .xlsx format."
 
 msgid "Kết luận"
 msgstr "Conclusion"
@@ -633,8 +852,35 @@ msgstr "Examination result / notes"
 msgid "Kết quả nhập"
 msgstr "Import result"
 
+msgid "Lich hen"
+msgstr "Appointment"
+
+msgid "Lich su quan tri"
+msgstr "Admin history"
+
 msgid "Liệt kê thuốc đang dùng"
 msgstr "List current medications"
+
+msgid "Lo"
+msgstr "Batch"
+
+msgid "Lo vac-xin"
+msgstr "Vaccine batch"
+
+msgid "Lo xuat kho"
+msgstr "Released batch"
+
+msgid "Ly do"
+msgstr "Reason"
+
+msgid "Ly do chong (khac)"
+msgstr "Contraindication reason (other)"
+
+msgid "Ly do chong chi dinh"
+msgstr "Reason for contraindication"
+
+msgid "Ly do hoan"
+msgstr "Reason for postponement"
 
 msgid "Lô"
 msgstr "Batch"
@@ -723,6 +969,9 @@ msgstr "Store the vaccination history of each customer."
 msgid "Lưu trữ lịch sử tiêm, tra cứu mọi lúc trên tài khoản của bạn."
 msgstr "Store your vaccination history and look it up anytime from your account."
 
+msgid "Lưu ý độ tuổi không khớp nhóm phác đồ: "
+msgstr "Note: age does not match the protocol group: "
+
 msgid "Lượt tiêm"
 msgstr "Vaccinations"
 
@@ -780,11 +1029,38 @@ msgstr "Payment history"
 msgid "Lịch sử xuất kho"
 msgstr "Stock-out History"
 
+msgid "Lỗi chất lượng"
+msgstr "Quality defect"
+
 msgid "Lỗi/bỏ qua: %(n)s"
 msgstr "Errors/skipped: %(n)s"
 
+msgid "Mach (lan/phut)"
+msgstr "Pulse (beats/min)"
+
 msgid "Mang theo sổ tiêm chủng (nếu có), ăn uống đầy đủ, thông báo cho bác sĩ về tiền sử dị ứng và tình trạng sức khỏe hiện tại."
 msgstr "Bring your vaccination record (if any), eat well, and inform the doctor of any allergy history and your current health condition."
+
+msgid "Mo ta"
+msgstr "Description"
+
+msgid "Mong muốn của khách hàng"
+msgstr "Customer's request"
+
+msgid "Muc do"
+msgstr "Severity"
+
+msgid "Mui so"
+msgstr "Dose number"
+
+msgid "Mui tiem"
+msgstr "Vaccination dose"
+
+msgid "Mui tiem (So tiem)"
+msgstr "Vaccination doses (Vaccination record)"
+
+msgid "Mô tả"
+msgstr "Description"
 
 msgid "Mô tả thêm (tùy chọn)"
 msgstr "Additional description (optional)"
@@ -798,6 +1074,9 @@ msgstr "Dose %(m)s"
 msgid "Mũi %(so)s"
 msgstr "Dose %(so)s"
 
+msgid "Mũi 1 phải để khoảng cách = 0."
+msgstr "Dose 1 must have an interval of 0."
+
 msgid "Mũi 1 để khoảng cách ="
 msgstr "Set dose 1 interval to"
 
@@ -810,8 +1089,17 @@ msgstr "For later doses, enter the number of"
 msgid "Mũi số"
 msgstr "Dose number"
 
+msgid "Mũi số bị trùng: "
+msgstr "Duplicate dose numbers: "
+
+msgid "Mũi số phải bắt đầu từ 1 và liên tục (1, 2, 3…). "
+msgstr "Dose numbers must start at 1 and be continuous (1, 2, 3…). "
+
 msgid "Mũi tiêm"
 msgstr "Dose"
+
+msgid "Mũi từ 2 trở đi phải có khoảng cách > 0 ngày."
+msgstr "Dose 2 onward must have an interval > 0 days."
 
 msgid "Mũi đã tiêm"
 msgstr "Doses administered"
@@ -825,8 +1113,14 @@ msgstr "Pulse (bpm)"
 msgid "Mật khẩu"
 msgstr "Password"
 
+msgid "Mật khẩu mới (để trống nếu không đổi)"
+msgstr "New password (leave blank to keep unchanged)"
+
 msgid "Mật khẩu mới (≥6 ký tự)"
 msgstr "New password (≥6 characters)"
+
+msgid "Mật khẩu mới phải từ 6 ký tự trở lên."
+msgstr "The new password must be at least 6 characters."
 
 msgid "Mỗi dòng là một lô nhập."
 msgstr "Each row is one stock-in batch."
@@ -837,8 +1131,92 @@ msgstr "Unlock"
 msgid "Mức độ"
 msgstr "Severity"
 
+msgid "Nam"
+msgstr "Male"
+
+msgid "Ngay"
+msgstr "Date"
+
+msgid "Ngay ghi nhan"
+msgstr "Recorded date"
+
+msgid "Ngay hen"
+msgstr "Appointment date"
+
+msgid "Ngay hen mui ke tiep"
+msgstr "Next dose appointment date"
+
+msgid "Ngay huy"
+msgstr "Disposal date"
+
+msgid "Ngay nhan"
+msgstr "Received date"
+
+msgid "Ngay nhap"
+msgstr "Entry date"
+
+msgid "Ngay san xuat"
+msgstr "Manufacture date"
+
+msgid "Ngay sang loc"
+msgstr "Screening date"
+
+msgid "Ngay sinh"
+msgstr "Date of birth"
+
+msgid "Ngay tao"
+msgstr "Created date"
+
+msgid "Ngay tao ho so"
+msgstr "Profile created date"
+
+msgid "Ngay thanh toan"
+msgstr "Payment date"
+
+msgid "Ngay tiem"
+msgstr "Vaccination date"
+
+msgid "Ngay xu ly"
+msgstr "Processing date"
+
+msgid "Ngay xuat"
+msgstr "Release date"
+
+msgid "Ngay yeu cau"
+msgstr "Request date"
+
+msgid "Nghiem trong"
+msgstr "Severe"
+
 msgid "Nghiêm trọng"
 msgstr "Severe"
+
+msgid "Nguoi gui"
+msgstr "Sender"
+
+msgid "Nguoi huy"
+msgstr "Disposed by"
+
+msgid "Nguoi lon"
+msgstr "Adults"
+
+msgid "Nguoi nhan"
+msgstr "Recipient"
+
+msgid "Nguoi nhap"
+msgstr "Imported by"
+
+msgid "Nguoi thu tien"
+msgstr "Cashier"
+
+msgid "Nguoi thuc hien"
+msgstr "Performed by"
+
+msgid "Nguoi tiem (dieu duong)"
+msgstr "Administered by (nurse)"
+
+msgid "Nguoi xuat"
+msgstr "Released by"
 
 msgid "Ngày"
 msgstr "Date"
@@ -870,6 +1248,12 @@ msgstr "Date of birth:"
 msgid "Ngày sản xuất"
 msgstr "Manufacture date"
 
+msgid "Ngày sản xuất phải trước hoặc bằng ngày nhập."
+msgstr "Manufacture date must be on or before the entry date."
+
+msgid "Ngày sản xuất phải trước hạn sử dụng."
+msgstr "Manufacture date must be before the expiry date."
+
 msgid "Ngày tiêm"
 msgstr "Vaccination date"
 
@@ -882,6 +1266,9 @@ msgstr "Discarded by"
 msgid "Người nhập"
 msgstr "Received by"
 
+msgid "Người thân khác"
+msgstr "Other relative"
+
 msgid "Người thực hiện"
 msgstr "Performed by"
 
@@ -890,6 +1277,18 @@ msgstr "Administered by"
 
 msgid "Người xuất"
 msgstr "Issued by"
+
+msgid "Người được tiêm"
+msgstr "Person to be vaccinated"
+
+msgid "Nha san xuat"
+msgstr "Manufacturer"
+
+msgid "Nhan vien gui"
+msgstr "Sent by staff"
+
+msgid "Nhiet do (C)"
+msgstr "Temperature (C)"
 
 msgid "Nhiệt độ"
 msgstr "Temperature"
@@ -900,8 +1299,17 @@ msgstr "Temperature (°C)"
 msgid "Nhiệt độ °C"
 msgstr "Temperature °C"
 
+msgid "Nhom doi tuong"
+msgstr "Target group"
+
+msgid "Nhà sản xuất"
+msgstr "Manufacturer"
+
 msgid "Nhóm"
 msgstr "Group"
+
+msgid "Nhóm đối tượng"
+msgstr "Target group"
 
 msgid "Nhập kho hàng loạt từ Excel"
 msgstr "Bulk stock-in from Excel"
@@ -948,6 +1356,15 @@ msgstr "Automatic dose reminders"
 msgid "Những trường hợp nên hoãn tiêm?"
 msgstr "When should vaccination be postponed?"
 
+msgid "Noi dung"
+msgstr "Content"
+
+msgid "Nu"
+msgstr "Female"
+
+msgid "Nuoc san xuat"
+msgstr "Country of manufacture"
+
 msgid "Năm %(y)s"
 msgstr "Year %(y)s"
 
@@ -957,11 +1374,32 @@ msgstr "Year (last 10 years)"
 msgid "Nước SX"
 msgstr "Country"
 
+msgid "Nước sản xuất"
+msgstr "Country of manufacture"
+
 msgid "PHIẾU XÁC NHẬN TIÊM CHỦNG"
 msgstr "VACCINATION CONFIRMATION CERTIFICATE"
 
 msgid "PHÒNG KHÁM TIÊM CHỦNG AN TÂM"
 msgstr "AN TAM VACCINATION CLINIC"
+
+msgid "Phac do"
+msgstr "Schedule"
+
+msgid "Phac do tiem"
+msgstr "Vaccination schedule"
+
+msgid "Phan ung nhe"
+msgstr "Mild reaction"
+
+msgid "Phieu huy kho"
+msgstr "Stock disposal form"
+
+msgid "Phieu sang loc"
+msgstr "Screening form"
+
+msgid "Phieu xuat kho"
+msgstr "Stock release form"
 
 msgid "Phiếu"
 msgstr "Record"
@@ -978,11 +1416,20 @@ msgstr "Stock Issue Slip"
 msgid "Phiếu xác nhận tiêm chủng"
 msgstr "Vaccination confirmation certificate"
 
+msgid "Phong benh"
+msgstr "Disease prevented"
+
+msgid "Phuong thuc"
+msgstr "Payment method"
+
 msgid "Phác đồ"
 msgstr "Schedules"
 
 msgid "Phác đồ - %(t)s"
 msgstr "Schedule - %(t)s"
+
+msgid "Phác đồ phải có ít nhất 1 mũi tiêm."
+msgstr "A schedule must have at least 1 dose."
 
 msgid "Phòng bệnh"
 msgstr "Disease prevented"
@@ -998,6 +1445,24 @@ msgstr "Method"
 
 msgid "Phản ứng nhẹ"
 msgstr "Mild reaction"
+
+msgid "Quan he voi chu tai khoan"
+msgstr "Relationship to account holder"
+
+msgid "Quan hệ với bạn"
+msgstr "Relationship to you"
+
+msgid "Quay lại để kiểm tra"
+msgstr "Return for a check-up"
+
+msgid "Quet the"
+msgstr "Card payment"
+
+msgid "Quy trinh"
+msgstr "Process"
+
+msgid "Quy trinh tiem"
+msgstr "Vaccination process"
 
 msgid "Quy trình tiêm chủng an toàn, khép kín tại phòng khám."
 msgstr "A safe, end-to-end vaccination process at the clinic."
@@ -1036,7 +1501,7 @@ msgid "Quản lý phòng khám tiêm chủng"
 msgstr "Vaccination clinic management"
 
 msgid "Quản trị"
-msgstr "Administration"
+msgstr "Administrator"
 
 msgid "Quản trị (superuser)"
 msgstr "Administrator (superuser)"
@@ -1065,14 +1530,41 @@ msgstr "Qty"
 msgid "Sau"
 msgstr "Next"
 
+msgid "Sau 24 gio"
+msgstr "After 24 hours"
+
 msgid "Sau 24 giờ"
 msgstr "After 24 hours"
+
+msgid "Sau 30 phut (tai phong kham)"
+msgstr "After 30 minutes (at the clinic)"
 
 msgid "Sau 30 phút"
 msgstr "After 30 minutes"
 
+msgid "Sau 48 gio"
+msgstr "After 48 hours"
+
 msgid "Sau 48 giờ"
 msgstr "After 48 hours"
+
+msgid "So dien thoai"
+msgstr "Phone number"
+
+msgid "So lo"
+msgstr "Batch number"
+
+msgid "So luong"
+msgstr "Quantity"
+
+msgid "So luong huy"
+msgstr "Quantity disposed"
+
+msgid "So luong ton"
+msgstr "Stock quantity"
+
+msgid "Suy giảm miễn dịch nặng (với vắc-xin sống)"
+msgstr "Severe immunodeficiency (for live vaccines)"
 
 msgid "Sàng lọc:"
 msgstr "Screening:"
@@ -1119,6 +1611,12 @@ msgstr "Dose count"
 msgid "Số tiền"
 msgstr "Amount"
 
+msgid "Số điện thoại"
+msgstr "Phone number"
+
+msgid "Số điện thoại phải gồm đúng 10 chữ số."
+msgstr "Phone number must be exactly 10 digits."
+
 msgid "Sổ tiêm chủng — %(ten)s"
 msgstr "Vaccination record — %(ten)s"
 
@@ -1146,11 +1644,32 @@ msgstr "Edit: %(t)s"
 msgid "Sửa: %(u)s"
 msgstr "Edit: %(u)s"
 
+msgid "Tai khoan"
+msgstr "Account"
+
+msgid "Tai khoan quan ly"
+msgstr "Managing account"
+
+msgid "Ten phac do"
+msgstr "Schedule name"
+
+msgid "Ten vac-xin"
+msgstr "Vaccine name"
+
+msgid "Thanh toan"
+msgstr "Payment"
+
+msgid "Thanh toán"
+msgstr "Payment"
+
 msgid "Thanh toán:"
 msgstr "Payment:"
 
 msgid "Thao tác"
 msgstr "Actions"
+
+msgid "Theo doi sau tiem"
+msgstr "Post-vaccination monitoring"
 
 msgid "Theo dõi sau tiêm"
 msgstr "Post-vaccination monitoring"
@@ -1158,8 +1677,23 @@ msgstr "Post-vaccination monitoring"
 msgid "Theo dõi sau tiêm như thế nào?"
 msgstr "How to monitor after vaccination?"
 
+msgid "Theo dõi tiếp"
+msgstr "Continue monitoring"
+
+msgid "Thoi diem theo doi"
+msgstr "Monitoring time point"
+
+msgid "Thoi gian"
+msgstr "Time"
+
+msgid "Thong bao"
+msgstr "Notification"
+
 msgid "Thu tiền cho đơn:"
 msgstr "Collect payment for order:"
+
+msgid "Thuoc dang dung"
+msgstr "Current medications"
 
 msgid "Thuốc đang sử dụng"
 msgstr "Current medication"
@@ -1215,11 +1749,23 @@ msgstr "Time"
 msgid "Thời điểm"
 msgstr "Time point"
 
+msgid "Thời điểm theo dõi"
+msgstr "Monitoring time"
+
 msgid "Thủ kho"
 msgstr "Warehouse"
 
+msgid "Tien mat"
+msgstr "Cash"
+
+msgid "Tien su benh"
+msgstr "Medical history"
+
+msgid "Tin nhan ho tro"
+msgstr "Support message"
+
 msgid "Tiêm"
-msgstr "Inject"
+msgstr "Injection"
 
 msgid "Tiêm chủng"
 msgstr "Vaccination"
@@ -1248,8 +1794,23 @@ msgstr "Medical history"
 msgid "Tiền sử:"
 msgstr "History:"
 
+msgid "Tong han dung (thang)"
+msgstr "Total shelf life (months)"
+
+msgid "Tong tien (VND)"
+msgstr "Total amount (VND)"
+
 msgid "Trang chủ - Phòng khám Tiêm chủng"
 msgstr "Home - Vaccination Clinic"
+
+msgid "Trang thai"
+msgstr "Status"
+
+msgid "Tre em"
+msgstr "Children"
+
+msgid "Trieu chung"
+msgstr "Symptoms"
 
 msgid "Triệu chứng"
 msgstr "Symptoms"
@@ -1274,6 +1835,15 @@ msgstr "Status"
 
 msgid "Trạng thái:"
 msgstr "Status:"
+
+msgid "Tu choi"
+msgstr "Rejected"
+
+msgid "Tuổi tối thiểu (tháng)"
+msgstr "Minimum age (months)"
+
+msgid "Tuổi tối đa (tháng)"
+msgstr "Maximum age (months)"
 
 msgid "Tài khoản"
 msgstr "Accounts"
@@ -1307,6 +1877,9 @@ msgstr "Your username"
 
 msgid "Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng thử lại."
 msgstr "Incorrect username or password. Please try again."
+
+msgid "Tên đăng nhập đã tồn tại."
+msgstr "Username already exists."
 
 msgid "Tìm"
 msgstr "Search"
@@ -1386,6 +1959,9 @@ msgstr "Low stock"
 msgid "Tổng doanh thu"
 msgstr "Total revenue"
 
+msgid "Tổng hạn dùng (tháng)"
+msgstr "Total shelf life (months)"
+
 msgid "Tổng lượt tiêm"
 msgstr "Total vaccinations"
 
@@ -1413,14 +1989,29 @@ msgstr "Reject"
 msgid "Từ chối yêu cầu của %(u)s?"
 msgstr "Reject request from %(u)s?"
 
+msgid "Từng bị sốc phản vệ với vắc-xin/thành phần ở lần tiêm trước"
+msgstr "Previous anaphylaxis to a vaccine/component at a prior injection"
+
 msgid "Tự tính"
 msgstr "Auto-calculate"
 
 msgid "Tự động nhắc mũi tiêm tiếp theo theo đúng phác đồ."
 msgstr "Automatically remind you of the next dose per the schedule."
 
+msgid "Vac-xin"
+msgstr "Vaccine"
+
+msgid "Vac-xin (don)"
+msgstr "Vaccine (single)"
+
+msgid "Vac-xin dang ky"
+msgstr "Registered vaccine"
+
 msgid "Vai trò"
 msgstr "Role"
+
+msgid "Vd: Trẻ từ 2 tháng tuổi, người lớn..."
+msgstr "E.g.: Children from 2 months old, adults..."
 
 msgid "Vd: dị ứng thuốc, thức ăn..."
 msgstr "E.g.: drug or food allergy..."
@@ -1433,6 +2024,12 @@ msgstr "e.g. high fever 39°C, needs re-examination..."
 
 msgid "Vd: đang sốt, mới ốm dậy..."
 msgstr "E.g.: fever, recently recovered..."
+
+msgid "Vi tri tiem"
+msgstr "Injection site"
+
+msgid "Vui lòng nhập tên bệnh viện chỉ định."
+msgstr "Please enter the prescribing hospital name."
 
 msgid "Vào bảng điều khiển"
 msgstr "Go to dashboard"
@@ -1512,6 +2109,12 @@ msgstr "Injection site"
 msgid "Vị trí tiêm (vd: bắp tay trái)"
 msgstr "Injection site (e.g.: left upper arm)"
 
+msgid "Vỡ/hỏng/bảo quản sai"
+msgstr "Broken/damaged/improperly stored"
+
+msgid "Vợ/Chồng"
+msgstr "Spouse"
+
 msgid "Website quản lý phòng khám tiêm chủng"
 msgstr "Vaccination Clinic Management Website"
 
@@ -1552,7 +2155,7 @@ msgid "Xem tất cả dịch vụ"
 msgstr "View all services"
 
 msgid "Xuất kho"
-msgstr "Issue stock"
+msgstr "Stock release"
 
 msgid "Xuất kho vắc-xin <strong>%(vx)s</strong> (trừ tồn 1 liều)."
 msgstr "Issue vaccine <strong>%(vx)s</strong> from stock (deduct 1 dose)."
@@ -1574,6 +2177,9 @@ msgstr "Confirm customer waiting"
 
 msgid "Xác nhận khách đã tới"
 msgstr "Confirm customer arrived"
+
+msgid "Xác nhận mật khẩu"
+msgstr "Confirm password"
 
 msgid "Xác nhận thanh toán"
 msgstr "Confirm payment"
@@ -1601,6 +2207,9 @@ msgstr "Delete vaccine %(t)s?"
 
 msgid "Xử lý"
 msgstr "Action"
+
+msgid "Yeu cau dat lai mat khau"
+msgstr "Password reset request"
 
 msgid "Yêu cầu sẽ được gửi tới <strong>quản trị viên</strong> để cấp lại mật khẩu.\n                    Sau khi được đặt lại, bạn đăng nhập với mật khẩu mới."
 msgstr "The request will be sent to an <strong>administrator</strong> to reset your password.\n                    Once reset, you can sign in with the new password."
@@ -1719,6 +2328,9 @@ msgstr "Nurse <strong>confirms receipt of vaccine</strong> from warehouse (to co
 msgid "Điều dưỡng thực hiện tiêm và ghi nhận."
 msgstr "Nurse administers and records the vaccination."
 
+msgid "Điều kiện bình thường"
+msgstr "Normal condition"
+
 msgid "Điện thoại"
 msgstr "Phone"
 
@@ -1731,8 +2343,29 @@ msgstr "Mark all as read"
 msgid "Đánh giá đủ điều kiện trước khi tiêm, an toàn."
 msgstr "Assess eligibility before vaccination, safely."
 
+msgid "Đã chuyển yêu cầu tái khám của \"%(ten)s\" cho lễ tân."
+msgstr "Follow-up request for \"%(ten)s\" forwarded to the receptionist."
+
 msgid "Đã có tài khoản?"
 msgstr "Already have an account?"
+
+msgid "Đã cập nhật \"%(ten)s\"."
+msgstr "\"%(ten)s\" updated."
+
+msgid "Đã cập nhật thông tin."
+msgstr "Information updated."
+
+msgid "Đã cập nhật tài khoản \"%(u)s\"."
+msgstr "Account \"%(u)s\" updated."
+
+msgid "Đã ghi nhận xử lý cho \"%(ten)s\"."
+msgstr "Handling recorded for \"%(ten)s\"."
+
+msgid "Đã gửi nhắc cho %(ten)s."
+msgstr "Reminder sent to %(ten)s."
+
+msgid "Đã gửi yêu cầu tới quản trị. Vui lòng chờ được cấp lại "
+msgstr "Your request has been sent to the administrator. Please wait for your password to be reset "
 
 msgid "Đã hết hạn"
 msgstr "Expired"
@@ -1740,14 +2373,32 @@ msgstr "Expired"
 msgid "Đã hủy"
 msgstr "Cancelled"
 
+msgid "Đã hủy lịch hẹn."
+msgstr "Appointment cancelled."
+
 msgid "Đã khám"
 msgstr "Examined"
 
 msgid "Đã khóa"
 msgstr "Locked"
 
+msgid "Đã khóa \"%(u)s\"."
+msgstr "Locked \"%(u)s\"."
+
+msgid "Đã lưu phác đồ \"%(ten)s\"."
+msgstr "Protocol \"%(ten)s\" saved."
+
+msgid "Đã mở khóa \"%(u)s\"."
+msgstr "Unlocked \"%(u)s\"."
+
 msgid "Đã nhận vắc-xin từ kho."
 msgstr "Vaccine received from warehouse."
+
+msgid "Đã nhập thành công %(n)s lô."
+msgstr "Successfully imported %(n)s batches."
+
+msgid "Đã thêm vắc-xin \"%(ten)s\"."
+msgstr "Vaccine \"%(ten)s\" added."
 
 msgid "Đã tiêm"
 msgstr "Vaccinated"
@@ -1755,11 +2406,23 @@ msgstr "Vaccinated"
 msgid "Đã tiêm\n                    <strong>%(ten)s</strong> (mũi %(mui)s) ngày %(ngay)s."
 msgstr "Vaccinated\n                    <strong>%(ten)s</strong> (dose %(mui)s) on %(ngay)s."
 
+msgid "Đã tạo phác đồ \"%(ten)s\". Thêm các mũi tiêm bên dưới."
+msgstr "Protocol \"%(ten)s\" created. Add the doses below."
+
+msgid "Đã tạo tài khoản \"%(u)s\"."
+msgstr "Account \"%(u)s\" created."
+
 msgid "Đã tới"
 msgstr "Arrived"
 
 msgid "Đã từ chối"
 msgstr "Rejected"
+
+msgid "Đã từ chối yêu cầu của \"%(u)s\"."
+msgstr "Request from \"%(u)s\" rejected."
+
+msgid "Đã vào phòng khám"
+msgstr "Entered exam room"
 
 msgid "Đã xuất"
 msgstr "Issued"
@@ -1770,8 +2433,20 @@ msgstr "Issued by vaccine (total %(n)s doses)"
 msgid "Đã xác nhận"
 msgstr "Confirmed"
 
+msgid "Đã xóa phác đồ \"%(ten)s\"."
+msgstr "Protocol \"%(ten)s\" deleted."
+
+msgid "Đã xóa vắc-xin \"%(ten)s\"."
+msgstr "Vaccine \"%(ten)s\" deleted."
+
 msgid "Đã đặt lại"
 msgstr "Reset done"
+
+msgid "Đã đặt lại mật khẩu cho \"%(u)s\"."
+msgstr "Password reset for \"%(u)s\"."
+
+msgid "Đã đặt lịch tái khám."
+msgstr "Follow-up appointment scheduled."
 
 msgid "Đã đến"
 msgstr "Arrived"
@@ -1851,11 +2526,17 @@ msgstr "Book appointments, get screened, track your vaccination history, and get
 msgid "Đến hạn nhắc (7 ngày)"
 msgstr "Due for reminder (7 days)"
 
+msgid "Địa chỉ"
+msgstr "Address"
+
 msgid "Địa chỉ:"
 msgstr "Address:"
 
 msgid "Đối tượng"
 msgstr "Target group"
+
+msgid "Đối tượng áp dụng"
+msgstr "Applicable subjects"
 
 msgid "Đồ án tốt nghiệp"
 msgstr "Graduation Project"

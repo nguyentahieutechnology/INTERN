@@ -43,6 +43,9 @@ RX_GETTEXT_D = re.compile(r'_\(\s*"((?:[^"\\]|\\.)*)"\s*\)')
 RX_GETTEXT_S = re.compile(r"_\(\s*'((?:[^'\\]|\\.)*)'\s*\)")
 RX_BLOCK = re.compile(r'{%\s*blocktrans\b[^%]*%}(.*?){%\s*endblocktrans\s*%}', re.DOTALL)
 RX_VAR = re.compile(r'{{\s*([\w]+)\s*}}')
+# Bat _("...") / gettext("...") / gettext_lazy("...") trong file .py
+RX_PY_D = re.compile(r'(?:\b_|gettext|gettext_lazy|ugettext|ugettext_lazy)\(\s*"((?:[^"\\]|\\.)*)"')
+RX_PY_S = re.compile(r"(?:\b_|gettext|gettext_lazy|ugettext|ugettext_lazy)\(\s*'((?:[^'\\]|\\.)*)'")
 
 
 def normalize(text):
@@ -64,6 +67,13 @@ def extract_msgids():
                 ids.add(unescape(m.group(1)))
         for m in RX_BLOCK.finditer(s):
             ids.add(normalize(m.group(1)))
+    # Quet cac chuoi dich trong code Python (model choices, verbose_name, messages...)
+    for path in glob.glob(os.path.join(PROJ, "core", "**", "*.py"), recursive=True):
+        with open(path, encoding="utf-8") as f:
+            s = f.read()
+        for rx in (RX_PY_D, RX_PY_S):
+            for m in rx.finditer(s):
+                ids.add(unescape(m.group(1)))
     return ids
 
 
